@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Settings } from "lucide-react";
+import { Link } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
@@ -59,11 +60,24 @@ const Navbar = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
               </motion.a>
             ))}
+            <Link
+              to="/admin"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              title="Admin Panel"
+            >
+              <Settings className="w-5 h-5" />
+            </Link>
             <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-4 md:hidden">
+            <Link
+              to="/admin"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Settings className="w-5 h-5" />
+            </Link>
             <ThemeToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
